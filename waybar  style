@@ -1,0 +1,129 @@
+/* ======================================
+   Waybar - Gruvbox Material Dark Hard 
+   ====================================== */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Monocraft";
+    font-weight: bold;
+    font-size: 16px;
+    min-height: 0;
+}
+
+/* ===== Base bar ===== */
+window#waybar {
+    background: rgba(0,0,0,0);
+    color: #d4be98;
+    transition: background 0.3s ease;
+    padding: 4px 8px;
+}
+
+/* ===== Tooltip ===== */
+tooltip {
+    background: #32302f;
+    border-radius: 8px;
+    border: 1px solid #504945;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+tooltip label {
+    color: #d4be98;
+}
+
+/* ===== Workspaces ===== */
+#workspaces button {
+    padding: 5px 10px;
+    color: #d4be98;
+    margin: 0 4px;
+    background: rgba(40, 40, 40, 0.6);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.focused {
+    color: #282828;
+    background: #7daea3; /* Gruvbox aqua */
+}
+
+
+/* ===== Modules (default) ===== */
+#window,
+#language,
+#disk,
+#cpu,
+#memory,
+#clock,
+#battery,
+#pulseaudio,
+#tray,
+#temperature,
+#workspaces,
+#bluetooth,
+#network,
+#mpris,
+#backlight{
+    background: rgba(29, 32, 33, 0.7);
+    color: #d4be98;
+    padding: 0px 10px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ===== Hover effects ===== */
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#network:hover,
+#pulseaudio:hover,
+#clock:hover {
+    background: rgba(50, 48, 47, 0.9);
+    box-shadow:rgba(212, 190, 152, 0.25);
+}
+
+/* ===== Colors by category ===== */
+#temperature.critical { color: #ea6962; } /* red */
+#temperature.normal   { color: #d4be98; } /* beige/normal temp */
+#cpu                  { color: #d8a657; } /* yellow */
+#memory               { color: #b16286; } /* purple */
+#battery              { color: #a9b665; } /* green */
+#network              { color: #7daea3; } /* aqua */
+#pulseaudio           { color: #e78a4e; } /* orange */
+#disk                 { color: #8ec07c; } /* green-light (armazenamento) */
+#backlight            { color: #fabd2f; } /* yellow (brilho) */
+
+/* ===== Rounded group modules ===== */
+#disk, #pulseaudio.microphone, #network {
+    border-radius: 8px 0 0 8px;
+}
+
+#backlight, #bluetooth {
+    border-radius: 0 8px 8px 0;
+}
+
+#clock, #custom-weather {
+    border-radius: 8px;
+}
+
+#backlight{
+  margin-right: 10px;
+}
+
+#network, #mpris{
+  margin-left: 10px;
+}
+
+#workspaces{
+  border-radius: 0px 8px 8px 0px;
+}
+
+#mpris {
+    color: #b8bb26; /* verde gruvbox */
+    padding: 0 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    background: rgba(29, 32, 33, 0.8);
+}
+
+#mpris:hover {
+    background: rgba(60, 56, 54, 0.9);
+    box-shadow: 0 0 5px rgba(184, 187, 38, 0.4);
+}
