@@ -1,0 +1,245 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 20,
+    "modules-left": [
+        "hyprland/workspaces",
+        "network",
+        "tray",
+        "bluetooth",
+        "mpris",
+    ],
+    "modules-center": [
+        "custom/weather",
+        "clock"
+    ],
+    "modules-right": [
+        "pulseaudio#microphone",
+        "pulseaudio",
+        "backlight",
+        "disk",
+        "memory",
+        "cpu",
+        "temperature",
+        "battery",
+    ],
+
+"mpris": {
+    "format": "{player_icon} {title} - {artist}",
+    "player-icons": {
+        "default": "♫",
+        "spotify": "",
+        "Playing": "",
+        "Paused": ""
+    },
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-scroll-up": "playerctl previous",
+    "on-scroll-down": "playerctl next",
+    "max-length": 50
+},
+
+    
+    "workspaces": {
+        "format": "{icon}",
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": ""
+        },
+        "sort-by-number": true
+    },
+
+    "network": {
+        "format-wifi": "{icon} ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{signalStrength}%\n\n{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "interval": 10,
+        "on-click-right":"kitty impala",
+        "format-icons": [
+      "󰤫",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ]
+    },
+
+    "custom/ip_flag": {
+        "tooltip" : true,
+        "format" : "IP: {}",
+        "interval" : 600,
+        "exec" : "ip-country-flag",
+        "return-type" : "json"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰛐",
+            "deactivated": "󰛑"
+        },
+        "tooltip": true
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "on-click": "mic-level toggle-mute",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "mic-level increase",
+        "on-scroll-down": "mic-level decrease",
+        "scroll-step": 5,
+        "tooltip": false,
+        "tooltip-format": "Mic Level: {volume}%"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "",
+        "on-click": "audio-level toggle-mute",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "audio-level increase",
+        "on-scroll-down": "audio-level decrease",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "tooltip": true,
+        "tooltip-format": "Volume: {volume}%"
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-alt-click": "click-right",
+        "format-alt": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "brightness-level increase 5",
+        "on-scroll-down": "brightness-level decrease 5 "
+    },
+
+    "clock": {
+        "format": "🕒 {:%A, %B %d, %Y (%R)}",
+        "format-alt": "🕒 {:%H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "on-click-right": "mode",
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-click-forward": "tz_up",
+                    "on-click-backward": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+    },
+
+    "custom/jdate": {
+        "tooltip" : false,
+        "format" : "🗓️ {}",
+        "interval" : 5,
+        "exec" : "echo $(TZ=Asia/Tehran jdate +%Y/%m/%d), $(TZ=Asia/Tehran date +%H:%M)",
+        "on-click": "brave time.ir; hyprctl dispatch workspace 2"
+    },
+
+    "memory": {
+        "interval": 10,
+        "format": " {}%",
+        "max-length": 10,
+        "on-click": "kitty --title waybar-alacritty -e btop"
+    },
+
+    "temperature": {
+        "thermal-zone": 1,
+        "format": " {temperatureC}°C",
+        "format-alt-click": "click-right",
+        "format-alt": " {temperatureF}°F",
+        "critical-threshold": 70,
+        "format-critical": " {temperatureF}°F",
+        "on-click": "kitty --title waybar-kitty -e btop"
+    },
+
+    "battery": {
+        "states": {
+            "good": 80,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt-click": "click-right",
+        "format-alt": "{icon} {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+     "bluetooth": {
+        "format": "󰂯",
+        "format-off": "󰂲",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
+        "format-connected-battery": "󰂱",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} conectado(s)",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} conectado(s)\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} ({device_battery_percentage}%)\n{device_address}",
+        "on-click": "bluetoothctl power toggle",
+        "on-click-right": "kitty bluetui"
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "interval": 10,
+        "max-length": 10,
+        "on-click": "kitty --title waybar-alacritty -e btop"
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": " {percentage_used}%",
+        "path": "/",
+        "on-click": "kitty --title waybar-alacritty -e btop"
+    }
+}
